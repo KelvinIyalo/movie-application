@@ -8,17 +8,37 @@
         android:id="@+id/navigation_home"
         android:name="com.kelviniyalo.moviesapp.presentation.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_search_movie"
+            app:destination="@id/navigation_search_movie" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search_movie"
         android:name="com.kelviniyalo.moviesapp.presentation.search_movie.SearchMovieFragment"
         android:label="@string/title_search_movie"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_movie_to_navigation_movie_details"
+            app:destination="@id/navigation_movie_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_movie_details"
         android:name="com.kelviniyalo.moviesapp.presentation.movie_detail.MovieDetailFragment"
         android:label="@string/title_movie_detail"
-        tools:layout="@layout/fragment_movie_details" />
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="movieCachedResponse"
+            app:argType="com.kelviniyalo.moviesapp.data.model.MoviesResponse"
+            app:nullable="true" />
+    </fragment>
 </navigation>

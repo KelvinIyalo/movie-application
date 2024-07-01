@@ -3,4 +3,5 @@
     <string name="title_home">Home</string>
     <string name="title_search_movie">Search Movie</string>
     <string name="title_movie_detail">Movie Details</string>
+    <string name="search_movie_title">Search Movie Title</string>
 </resources>
