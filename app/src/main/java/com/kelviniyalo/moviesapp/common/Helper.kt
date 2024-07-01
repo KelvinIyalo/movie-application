@@ -8,6 +8,8 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.palette.graphics.Palette
@@ -24,6 +26,16 @@ import com.kelviniyalo.moviesapp.R
 import java.io.ByteArrayOutputStream
 
 object Helper {
+
+    fun View.startMoveUpAnimation(context: Context) {
+        val animation = AnimationUtils.loadAnimation(context, R.anim.move_up)
+        startAnimation(animation)
+    }
+
+    fun View.startSlideInAnimation(context: Context) {
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide_in_left_right)
+        startAnimation(animation)
+    }
 
     private fun getProgressDrawable(context: Context): CircularProgressDrawable {
         return CircularProgressDrawable(context).apply {

@@ -15,6 +15,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.kelviniyalo.moviesapp.R
 import com.kelviniyalo.moviesapp.adapter.SearchMoviesAdapter
+import com.kelviniyalo.moviesapp.common.Helper.startMoveUpAnimation
+import com.kelviniyalo.moviesapp.common.Helper.startSlideInAnimation
 import com.kelviniyalo.moviesapp.common.response_handler.UiState
 import com.kelviniyalo.moviesapp.databinding.FragmentSearchBinding
 import com.kelviniyalo.moviesapp.presentation.viewmodel.MoviesViewModel
@@ -57,6 +59,7 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search) {
                     }
                 }
             }
+            backBtn.startSlideInAnimation(requireContext())
             backBtn.setOnClickListener {
                 findNavController().popBackStack()
             }
@@ -74,6 +77,7 @@ class SearchMovieFragment : Fragment(R.layout.fragment_search) {
                 is UiState.Success -> {
                     showLoader(false)
                     searchMoviesAdapter.submitList(response.data)
+                    binding.searchListRv.startMoveUpAnimation(requireContext())
                 }
 
                 is UiState.DisplayError -> {

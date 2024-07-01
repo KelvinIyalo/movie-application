@@ -14,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.kelviniyalo.moviesapp.R
 import com.kelviniyalo.moviesapp.common.Helper
 import com.kelviniyalo.moviesapp.common.Helper.loadImage
+import com.kelviniyalo.moviesapp.common.Helper.startMoveUpAnimation
+import com.kelviniyalo.moviesapp.common.Helper.startSlideInAnimation
 import com.kelviniyalo.moviesapp.common.response_handler.UiState
 import com.kelviniyalo.moviesapp.data.model.MoviesResponse
 import com.kelviniyalo.moviesapp.databinding.FragmentMovieDetailsBinding
@@ -33,7 +35,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_details) {
         getMovieDetails()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().popBackStack(R.id.navigation_home, true)
+                findNavController().popBackStack(R.id.navigation_home, false)
             }
         }
 
@@ -42,7 +44,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_details) {
 
 
     private fun getMovieDetails() {
-        if (navigationArgs.movieId!!.isNotEmpty()) {
+        if (navigationArgs.movieId != null) {
             searchRemoteSourceById(navigationArgs.movieId.toString())
         } else {
             getFromLocalSource()
@@ -104,6 +106,13 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_details) {
             }
             actorsValue.text = movieResponse.Actors
             directorValue.text = movieResponse.Director
+
+            plotValue.startMoveUpAnimation(requireContext())
+            actorsValue.startMoveUpAnimation(requireContext())
+            directorValue.startMoveUpAnimation(requireContext())
+            directorLabel.startMoveUpAnimation(requireContext())
+            directorLabel.startMoveUpAnimation(requireContext())
+            movieImg.startSlideInAnimation(requireContext())
         }
     }
 

@@ -1,6 +1,5 @@
 package com.kelviniyalo.moviesapp.adapter
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -61,8 +60,6 @@ class RecentMoviesAdapter(
         }
 
 
-        @SuppressLint("ResourceType")
-        @RequiresApi(Build.VERSION_CODES.O)
         fun bind(movies: MoviesResponse) {
             with(binding) {
                 Log.d("XXXX Item adapter",movies.toString())
